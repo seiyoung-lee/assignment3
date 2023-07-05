@@ -9,6 +9,8 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 var inventoryRouter = require('./routes/inventory');
 
+require("./database/database");
+
 var app = express();
 
 app.use(cors());
