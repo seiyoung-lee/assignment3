@@ -11,19 +11,17 @@ const InventoryController = {
 
     getData: async function (req, res, next) {
         try {
-            const items = await InventoryModel.find();
+            let items = await InventoryModel.find();
             const sort = Number(req.query.sort);
             if (sort > 0) {
                 items = items.sort((a,b) => {
-                return a["price"] > b["price"] ? 1 : -1;
+                    return a["price"] > b["price"] ? 1 : -1;
                 });
             } else if (sort < 0) {
                 items = items.sort((a,b) => {
-                return a["price"] < b["price"] ? 1 : -1;
+                    return a["price"] < b["price"] ? 1 : -1;
                 });
             } 
-
-            console.log(items);
 
             const newArray = items.map((item) => {
                 return {id: item.id, name: item.name, imageURL : item.imageURL}
@@ -38,7 +36,6 @@ const InventoryController = {
     getOneItem: async function (req, res, next) {
         try {
             const item = await InventoryModel.findOne({ id: req.params.itemId });
-            console.log(item);
             if (!item) return res.status(404).send({ message: 'Item not found' });
 
             return res.status(200).send(item);
@@ -55,7 +52,6 @@ const InventoryController = {
         };
         try {
             const item = await InventoryModel.findOneAndUpdate({ id: req.params.itemId }, params, { new: true });
-            console.log(item);
             if (!item) return res.status(404).send({ message: 'Item not found' });
 
             return res.status(200).send(item);
@@ -67,7 +63,6 @@ const InventoryController = {
     DeleteItem: async function (req, res, next) {
         try {
             const item = await InventoryModel.findOneAndDelete({ id: req.params.itemId });
-            console.log(item);
             if (!item) return res.status(404).send({ message: 'Item not found' });
 
             return res.status(200).send(item);
