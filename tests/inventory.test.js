@@ -47,23 +47,23 @@ describe('App', () => {
         expect(response.status).toBe(200);
     });
 
-    // it('should return status 201 for POST /inventory', async () => {
-    //     const newInv = {
-    //         name: 'John Doe',
-    //         price: 2,
-    //         description: '124',
-    //         imageURL: "asdfasd"
-    //     };
-    //     const response = await request(app).post('/inventory').send(newInv);
-    //     expect(response.status).toBe(201);
-    //     expect(response.body).toBeDefined();
-    //     expect(response.body.name).toBe(newInv.name);
-    //     expect(response.body.price).toBe(newInv.price);
-    //     expect(response.body.description).toBe(newInv.description);
-    //     expect(response.body.imageURL).toBe(newInv.imageURL);
-    //     expect(response.body.id).toBeDefined(); 
-    //     console.log(response.body);
-    // });
+    it('should return status 201 for POST /inventory', async () => {
+        const newInv = {
+            name: 'John Doe',
+            price: 2,
+            description: '124',
+            imageURL: "asdfasd"
+        };
+        const response = await request(app).post('/inventory').send(newInv);
+        expect(response.status).toBe(201);
+        expect(response.body).toBeDefined();
+        expect(response.body.name).toBe(newInv.name);
+        expect(response.body.price).toBe(newInv.price);
+        expect(response.body.description).toBe(newInv.description);
+        expect(response.body.imageURL).toBe(newInv.imageURL);
+        expect(response.body.id).toBeDefined(); 
+        console.log(response.body);
+    });
 
     it('should return status 200 for GET /inventory', async () => {
         const response = await request(app).get('/inventory');
