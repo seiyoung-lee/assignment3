@@ -62,12 +62,10 @@ describe('App', () => {
         expect(response.body.description).toBe(newInv.description);
         expect(response.body.imageURL).toBe(newInv.imageURL);
         expect(response.body.id).toBeDefined(); 
-        console.log(response.body);
     });
 
     it('should return status 200 for GET /inventory', async () => {
         const response = await request(app).get('/inventory');
-        console.log(response.body);
         expect(response.status).toBe(200);
     });
 

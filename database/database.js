@@ -4,7 +4,6 @@ require('dotenv').config();
 async function connectToDatabase(mongoUri) {
     const MONGODB_URI = process.env.MONGODB_URI;
     const uri = mongoUri ? mongoUri : MONGODB_URI;
-    console.log(uri);
     mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to the database');
