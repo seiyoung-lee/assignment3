@@ -9,7 +9,11 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 var inventoryRouter = require('./routes/inventory');
 
-require("./database/database");
+const connect = require("./database/database");
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV !== 'test') {
+    connect.connectToDatabase();
+}
 
 var app = express();
 
